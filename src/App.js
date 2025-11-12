@@ -4,9 +4,11 @@ import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
+import NotFoundPage from './pages/NotFoundPage';
 import { getCurrentUser } from './services/authService';
+import './styles/App.css';
 
-function App() {
+export default function App() {
   const user = getCurrentUser();
 
   return (
@@ -17,9 +19,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
 }
-
-export default App;

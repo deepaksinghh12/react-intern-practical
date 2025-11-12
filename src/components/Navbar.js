@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { getCurrentUser, logout } from '../services/authService';
+import '../styles/App.css';
 
 export default function Navbar() {
-  const navigate = useNavigate();
   const user = getCurrentUser();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
@@ -12,19 +13,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <div className="container">
-        <Link className="navbar-brand" to="/">React Auth App</Link>
-        <div>
+        <Link className="navbar-brand fw-bold" to="/">ReactAuth</Link>
+        <div className="d-flex">
           {user ? (
             <>
-              <Link to="/profile" className="btn btn-outline-light btn-sm me-2">Profile</Link>
-              <button onClick={handleLogout} className="btn btn-danger btn-sm">Logout</button>
+              <NavLink to="/profile" className="btn btn-outline-light btn-sm me-2">Profile</NavLink>
+              <button className="btn btn-danger btn-sm" onClick={handleLogout}>Logout</button>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn btn-outline-light btn-sm me-2">Login</Link>
-              <Link to="/register" className="btn btn-success btn-sm">Register</Link>
+              <NavLink to="/login" className="btn btn-outline-light btn-sm me-2">Login</NavLink>
+              <NavLink to="/register" className="btn btn-success btn-sm">Register</NavLink>
             </>
           )}
         </div>

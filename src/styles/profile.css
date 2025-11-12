@@ -1,0 +1,9 @@
+.profile-container {
+  height: 75vh;
+}
+
+.profile-card {
+  width: 400px;
+  background: white;
+  border-radius: 12px;
+}
